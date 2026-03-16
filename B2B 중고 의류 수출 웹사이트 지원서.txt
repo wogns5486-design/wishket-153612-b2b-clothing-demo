@@ -1,0 +1,99 @@
+======================================
+위시켓 지원서 - B2B 중고 의류 수출 기업 영문 웹사이트
+======================================
+
+【지원 금액】
+2,800,000
+
+【지원 기간】
+21
+
+【지원 내용】
+
+<프로젝트 분석>
+
+프로젝트 요구사항을 분석하고, 참고 사이트(eurotexglobal.com)를 벤치마킹하여 이미 워드프레스 커스텀 테마를 개발 완료한 상태입니다.
+
+귀사의 타겟인 아프리카·남미·동남아 B2B 바이어가 웹사이트를 통해 기업 신뢰성을 확인하고, 컨테이너 단위 구매 문의를 보내는 것이 핵심 목표라고 파악했습니다. 이를 위해 다음 3가지에 집중했습니다:
+
+1) 신뢰감을 주는 디자인 — Eurotex 스타일(검정+빨강 산업적 톤)을 기반으로 회사 소개, 5단계 프로세스, 시설 갤러리, 인증 배지, 바이어 후기 등 B2B 신뢰 요소를 빠짐없이 배치
+2) 바이어 문의 전환율 — Contact Form 7 문의 폼 + WhatsApp 플로팅 버튼으로 바이어가 선호하는 채널로 즉시 연락 가능
+3) 글로벌 SEO — Yoast SEO 플러그인으로 메타태그, 사이트맵, Open Graph를 자동 관리하여 검색 유입 확보
+
+
+<유사 프로젝트 경험>
+
+워드프레스 커스텀 테마 개발 경험이 있으며, 특히 B2B 기업 웹사이트 구축에 강점이 있습니다.
+
+- 워드프레스 커스텀 테마 개발: PHP 템플릿 계층(header.php/footer.php/page templates), Custom Walker_Nav_Menu, 커스터마이저 연동, wp_enqueue_script/style 등 WP 표준 패턴 숙지
+- 반응형 B2B 웹사이트: 부동산 분양 홍보 웹사이트 2종(Next.js + Cloudflare Pages), 법무법인 홈페이지, B2B 현장 관리 솔루션 MVP 등 기업용 웹사이트 다수 구축
+- Contact Form 7 + 이메일 연동: CF7 커스텀 스타일링(BEM 클래스 매핑), WP Mail SMTP 설정 경험
+- SEO: Yoast SEO 설정, 메타태그/사이트맵 최적화, 구조화 데이터(Schema.org) 적용 경험
+- 글로벌 인프라: Cloudflare CDN, Cloudways 호스팅 배포 경험
+
+현재 40개 이상의 웹 프로젝트를 완료했으며, 3개의 실서비스를 직접 운영 중입니다.
+
+
+<사용 기술과 툴>
+
+CMS: WordPress (커스텀 PHP 테마)
+프론트엔드: HTML5, CSS3 (BEM, Flexbox, Grid), Vanilla JavaScript
+문의 시스템: Contact Form 7 + WP Mail
+WhatsApp: Click-to-Chat 플로팅 버튼 (커스터마이저 번호 연동)
+SEO: Yoast SEO (메타태그, 사이트맵, Open Graph)
+개발 환경: Docker Compose (WordPress + MySQL + MailHog)
+배포 예정: Cloudways + Cloudflare CDN
+
+BEM 네이밍 기반의 시맨틱 CSS로 유지보수가 용이하고, Custom Walker로 네비게이션 스타일을 완벽 제어합니다.
+
+
+<진행 일정 (21일)>
+
+이미 핵심 개발이 완료된 상태이므로, 브랜드 가이드라인 반영 + 실서버 배포에 집중합니다.
+
+1주차: 클라이언트 미팅 + 브랜드 가이드라인 반영
+  - 착수 미팅 (요구사항 최종 확인, 브랜드 가이드라인 수령)
+  - 로고·색상·폰트 반영, 실제 회사 데이터로 콘텐츠 교체
+  - 중간 점검 (디자인 컨펌)
+
+2주차: 기능 완성 + 인프라 구성
+  - Cloudways 서버 세팅 + 도메인 연결 + SSL
+  - Cloudflare CDN 연동 (아프리카·남미 접속 속도 최적화)
+  - Contact Form 7 실제 이메일 연동 + WhatsApp 번호 설정
+  - Yoast SEO 세부 설정 (키워드, 메타 디스크립션)
+  - 관리자 콘텐츠 편집 가이드 작성
+
+3주차: QA + 납품
+  - 크로스 브라우저 테스트 (Chrome, Safari, Firefox, Edge)
+  - 반응형 테스트 (모바일/태블릿/데스크탑)
+  - 문의 폼 → 이메일 수신 테스트
+  - WhatsApp 버튼 동작 확인
+  - SEO 사이트맵 + 검색 엔진 등록
+  - 최종 검수 + 납품 + 관리자 교육
+
+현재 정보 기반 견적이며, 미팅 후 세부 요구사항에 따라 조정 가능합니다.
+
+
+【관련 포트폴리오 설명】
+
+본 프로젝트를 위해 이미 워드프레스 커스텀 테마를 개발 완료한 상태입니다.
+
+[완성된 항목]
+- 워드프레스 커스텀 테마 "KoreaTextile" (PHP 템플릿 10개)
+- 4개 페이지: Home(히어로 슬라이더, 강점 카드, 통계, 제품, 바이어 후기, 글로벌 마켓), About(프로세스 타임라인, 시설 갤러리, 인증), Products(3개 카테고리 상세 + FAQ), Contact(CF7 문의 폼)
+- Custom Walker_Nav_Menu로 BEM 클래스 기반 네비게이션
+- 커스터마이저로 연락처 정보(전화/이메일/주소/WhatsApp) 관리
+- WhatsApp Click-to-Chat 플로팅 버튼
+- Contact Form 7 문의 폼 (BEM 클래스 매핑, 이메일 전송 동작)
+- Docker Compose 환경 (WordPress + MySQL + MailHog)
+- 데스크톱/태블릿/모바일 완전 반응형
+- WCAG 접근성 준수 (ARIA, focus-visible, semantic HTML)
+
+[정적 HTML 데모 — 라이브 확인 가능]
+GitHub Pages에서 디자인 미리보기가 가능합니다:
+https://wogns5486-design.github.io/wishket-153612-b2b-clothing-demo/
+
+[소스 코드]
+https://github.com/wogns5486-design/wishket-153612-b2b-clothing-demo
+
+미팅 시 Docker로 실제 워드프레스 사이트를 바로 시연해드릴 수 있으며, 브랜드 가이드라인만 반영하면 빠르게 납품 가능합니다.
