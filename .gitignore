@@ -1,0 +1,4 @@
+wp_data/
+db_data/
+*.log
+.omc/
