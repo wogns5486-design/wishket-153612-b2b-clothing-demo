@@ -1,11 +1,11 @@
-# B2B 중고 의류 수출 기업 영문 웹사이트 데모
+# B2B 중고 의류 수출 기업 영문 웹사이트 (WordPress)
 
 ## 1. 프로젝트 개요
 
 | 항목 | 내용 |
 |------|------|
 | **프로젝트명** | B2B 중고 의류 수출 기업 영문 웹사이트 |
-| **프로젝트 유형** | B2B 기업 홍보 웹사이트 (정적 데모) |
+| **프로젝트 유형** | B2B 기업 홍보 웹사이트 (WordPress 커스텀 테마) |
 | **도메인** | 중고 의류 수출 무역업 |
 | **대상 사용자** | 해외 B2B 바이어 (아프리카, 남미, 동남아) |
 | **핵심 목적** | 한국산 고품질 중고 의류를 수거·분류·압축하여 수출하는 B2B 전문 무역 기업의 글로벌 세일즈 목적 영문 웹사이트 |
@@ -75,13 +75,17 @@
 
 | 분류 | 기술 | 비고 |
 |------|------|------|
-| **마크업** | HTML5 | 시맨틱 태그 (`<main>`, `<section>`, `<nav>`, `<header>`, `<footer>`) |
+| **CMS** | WordPress | 최신 버전, 커스텀 PHP 테마 |
+| **마크업** | HTML5 + PHP | 시맨틱 태그, WP 템플릿 계층 |
 | **스타일링** | CSS3 | Custom Properties, Flexbox, Grid, BEM 네이밍 |
-| **스크립트** | Vanilla JavaScript | ES6+ (const/let, IntersectionObserver, fetch, FormData) |
-| **폰트** | Google Fonts | Open Sans, Roboto (CDN) |
-| **이미지** | Unsplash | 스톡 사진 (CDN 핫링크) |
-| **문의 폼** | Formspree | 무료 플랜, REST API POST |
-| **배포** | GitHub Pages | 정적 호스팅 |
+| **스크립트** | Vanilla JavaScript | ES6+ (IntersectionObserver, wp_enqueue_script) |
+| **폰트** | Google Fonts | Open Sans, Roboto (wp_enqueue_style) |
+| **이미지** | Unsplash → 로컬 | 13개 이미지 테마 assets/images/에 저장 |
+| **문의 폼** | Contact Form 7 | BEM 클래스 매핑, WP Mail 연동 |
+| **WhatsApp** | Click-to-Chat | 플로팅 버튼, 커스터마이저 번호 연동 |
+| **SEO** | Yoast SEO | 메타태그, 사이트맵 자동 생성 |
+| **로컬 환경** | Docker Compose | WordPress + MySQL + MailHog |
+| **배포** | GitHub + (수주 후 Cloudways) | 테마 코드 GitHub, 실배포는 수주 후 |
 
 ---
 
@@ -117,18 +121,29 @@
 
 ```
 10.wishket/
-├── index.html              # Home — 히어로, 강점, 통계, 제품, 후기, 글로벌, CTA
-├── about.html              # About — 회사 소개, 프로세스, 갤러리, 인증
-├── products.html           # Products — 3개 카테고리 상세 + FAQ
-├── contact.html            # Contact — 연락처 + 문의 폼
-├── css/
-│   └── style.css           # 전체 스타일 (~750줄, BEM, 반응형 co-located)
-├── js/
-│   ├── main.js             # 네비게이션, 스크롤, 카운터, FAQ 아코디언
-│   ├── slider.js           # 히어로 슬라이더 (자동재생 + pause on hover)
-│   └── contact.js          # 폼 검증 + Formspree 전송 + 데모 모드
-├── 프로젝트메모.md           # 위시켓 프로젝트 정보
-└── 프로젝트_보고서.md        # 이 파일
+├── docker-compose.yml              # WP + MySQL + MailHog
+├── .gitignore
+├── koreatextile-theme/             # WordPress 커스텀 테마
+│   ├── style.css                   # 테마 메타 + BEM CSS (~1370줄)
+│   ├── functions.php               # Enqueue, Walker, 커스터마이저, WhatsApp, SMTP
+│   ├── header.php                  # 공통 헤더 (topbar + nav + Walker)
+│   ├── footer.php                  # 공통 푸터 + wp_footer()
+│   ├── front-page.php              # Home
+│   ├── page-about.php              # About Us
+│   ├── page-products.php           # Products + FAQ
+│   ├── page-contact.php            # Contact + CF7
+│   ├── page.php                    # 기본 페이지 (the_content())
+│   ├── 404.php                     # 404 에러
+│   ├── inc/
+│   │   └── class-nav-walker.php    # Custom Walker (BEM 클래스)
+│   └── assets/
+│       ├── js/main.js              # 네비게이션, 스크롤, 카운터, FAQ
+│       ├── js/slider.js            # 히어로 슬라이더
+│       └── images/                 # Unsplash 로컬 이미지 (13개)
+├── index.html                      # 정적 HTML 원본 (참고용)
+├── about.html / products.html / contact.html
+├── css/ / js/                      # 정적 원본 (참고용)
+└── B2B 중고 의류 수출 웹사이트.md   # 프로젝트 메모
 ```
 
 ---
@@ -143,9 +158,13 @@
 
 `style.css`와 `responsive.css`를 분리하지 않고, 각 컴포넌트 스타일 바로 아래에 미디어쿼리를 배치. 컴포넌트 수정 시 관련 반응형 코드를 즉시 찾을 수 있어 유지보수가 용이.
 
-### 6-3. Formspree 데모 모드
+### 6-3. Contact Form 7 BEM 클래스 매핑
 
-`contact.js`에서 Formspree URL에 플레이스홀더(`YOUR_FORM_ID`)가 있으면 자동으로 데모 모드 진입. 폼 검증은 정상 수행하되, 전송 시 성공 메시지를 바로 표시. 실제 배포 시 form_id만 교체하면 즉시 동작.
+CF7의 기본 마크업 대신, `class:form__input` 속성으로 기존 BEM 클래스를 적용. CF7 기본 CSS는 `wp_dequeue_style`로 제거하고, 기존 `.form__*` 스타일을 그대로 재활용. Docker MailHog로 이메일 전송까지 테스트 가능.
+
+### 6-4. WordPress 커스터마이저 통합
+
+전화번호, 이메일, 주소, WhatsApp 번호를 커스터마이저에서 관리. `get_theme_mod()`로 header/footer/WhatsApp 버튼에서 동적으로 가져옴. 클라이언트가 코드 수정 없이 WP 관리자에서 연락처 변경 가능.
 
 ### 6-4. WCAG 접근성 준수
 
@@ -202,10 +221,10 @@
 
 ## 포트폴리오 요약 (한 줄)
 
-> Eurotex 스타일의 B2B 중고 의류 수출 기업 영문 웹사이트 데모. Vanilla HTML/CSS(BEM)/JS로 4페이지 반응형 사이트를 구축하고, Formspree 문의 폼 연동과 WCAG 접근성을 갖춘 프로덕션 레디 데모. WordPress 전환 대비 시맨틱 구조 설계.
+> WordPress 커스텀 테마 기반 B2B 중고 의류 수출 기업 영문 웹사이트. Custom Walker(BEM), Contact Form 7, WhatsApp 플로팅 버튼, Yoast SEO, Docker Compose(WP+MySQL+MailHog) 환경 구성. 4페이지 반응형 + WCAG 접근성 + 커스터마이저 연락처 관리.
 
 ---
 
 ## 핵심 키워드
 
-`HTML5` `CSS3` `BEM` `Vanilla JS` `반응형 웹` `B2B` `영문 웹사이트` `중고 의류 수출` `Formspree` `GitHub Pages` `WCAG 접근성` `WordPress 전환 대비`
+`WordPress` `PHP` `HTML5` `CSS3` `BEM` `Vanilla JS` `반응형 웹` `B2B` `영문 웹사이트` `중고 의류 수출` `Contact Form 7` `Yoast SEO` `WhatsApp` `Docker Compose` `Custom Walker` `커스터마이저` `WCAG 접근성`
