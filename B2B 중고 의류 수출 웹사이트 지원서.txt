@@ -89,11 +89,8 @@ BEM 네이밍 기반의 시맨틱 CSS로 유지보수가 용이하고, Custom Wa
 - 데스크톱/태블릿/모바일 완전 반응형
 - WCAG 접근성 준수 (ARIA, focus-visible, semantic HTML)
 
-[정적 HTML 데모 — 라이브 확인 가능]
-GitHub Pages에서 디자인 미리보기가 가능합니다:
+[라이브 데모]
 https://wogns5486-design.github.io/wishket-153612-b2b-clothing-demo/
 
-[소스 코드]
-https://github.com/wogns5486-design/wishket-153612-b2b-clothing-demo
-
+소스 코드는 미팅 시 화면 공유로 확인 가능합니다.
 미팅 시 Docker로 실제 워드프레스 사이트를 바로 시연해드릴 수 있으며, 브랜드 가이드라인만 반영하면 빠르게 납품 가능합니다.
